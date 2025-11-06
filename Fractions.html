@@ -239,14 +239,14 @@
             <!-- تفاصيل النتيجة -->
             <div class="text-xl font-semibold flex flex-wrap justify-center gap-4 mt-2">
                 <span>النقاط: <span id="score" class="text-green-700">٠</span></span>
-                <span>البطاقات المكتملة: <span id="completed-cards-count">٠</span> / <span id="total-questions">٨</span></span>
+                <span>البطاقات المكتملة: <span id="completed-cards-count">٠</span> / <span id="total-questions">١٠</span></span>
                 <!-- Joker Counter -->
                 <span>الجوكر: <span id="joker-uses" class="text-yellow-700">٠</span></span>
             </div>
         </div>
 
         <!-- شبكة البطاقات المقلوبة -->
-        <div id="card-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
+        <div id="card-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mb-8">
             <!-- البطاقات سيتم حقنها هنا -->
         </div>
 
@@ -356,10 +356,10 @@
 
         // الأسئلة المحدثة بالأرقام والكسور كنص عربي عادي
         const questions = [
-            // ===== Video-Linked Questions (type: 'video') - Red Cards - TEXT only =====
+            // ===== Video-Linked Questions (type: 'video') - Red Cards - 7 total =====
             {
                 id: 1,
-                category: "قانون الجمع والطرح (شرح)",
+                category: "قانون الجمع والطرح (توحيد)",
                 text: "١/٢ + ١/٣ = ؟", 
                 options: ["٢/٥", "١/٦", "٥/٦", "٣/٥"], 
                 answer: "٥/٦", 
@@ -372,7 +372,7 @@
             },
             {
                 id: 2,
-                category: "قانون الضرب (شرح)",
+                category: "قانون الضرب",
                 text: "٤/٥ × ٢/٣ = ؟", 
                 options: ["٦/٨", "٨/١٥", "١٢/١٠", "٨/٥"], 
                 answer: "٨/١٥", 
@@ -385,7 +385,7 @@
             },
             {
                 id: 3,
-                category: "قانون القسمة (شرح)",
+                category: "قانون القسمة",
                 text: "٣/٤ ÷ ١/٢ = ؟", 
                 options: ["٣/٨", "١/٢", "٣/٢", "٤/٦"], 
                 answer: "٣/٢", 
@@ -398,7 +398,7 @@
             },
             {
                 id: 4,
-                category: "ترتيب العمليات (شرح)",
+                category: "ترتيب العمليات (الأولوية)",
                 text: "١/٦ + ١/٣ × ١/٢ = ؟", 
                 options: ["١/٣", "٢/٥", "١/١٢", "٢/٣"], 
                 answer: "١/٣", 
@@ -409,21 +409,48 @@
                 jokerUsed: false,
                 type: 'video'
             },
-            // ===== Custom Application Questions (type: 'custom') - Indigo Cards - TEXT only =====
-            {
+             {
                 id: 5,
-                category: "تبسيط الكسور (تطبيق)",
-                text: "(٨٨ + ٨٨ + ٨٨) / ٨٨ = ؟", 
-                options: ["٣", "٨٨", "٨٨/٣", "١"], 
-                answer: "٣", 
-                explanation: "نحول الجمع المتكرر إلى ضرب: (٨٨ × ٣) / ٨٨. نحذف ٨٨ من البسط والمقام، والناتج هو ٣.",
+                category: "القسمة السريعة (تطبيق)",
+                text: "نتيجة الكسر ٢٤٤٠/١٠٠٠ كعدد عشري هي؟", 
+                options: ["٠.٢٤٤", "٢٤.٤", "٢.٤٤", "٢٤٤.٠"], 
+                answer: "٢.٤٤", 
+                explanation: "عند القسمة على ١٠٠٠، نتحرك بالفاصلة ثلاث خانات لليسار. ٠(الآحاد) ٤(العشرات) ٤(المئات) يتبعها الفاصلة. الناتج ٢.٤٤",
                 isAnswered: false,
                 isCorrect: false,
+                youtubeUrl: "https://www.youtube.com/watch?v=TDDb4GUJa6I&t=875s", // 14:35
                 jokerUsed: false,
-                type: 'custom'
+                type: 'video'
             },
             {
                 id: 6,
+                category: "تبسيط المتغيرات (س)",
+                text: "(س ÷ س) × (٤ ÷ س) × س = ؟", 
+                options: ["٤", "س", "٤س", "٤/س"], 
+                answer: "٤", 
+                explanation: "س ÷ س = ١. الكسر الثاني والرابع: (٤ ÷ س) × س = ٤. الناتج النهائي هو ١ × ٤ = ٤",
+                isAnswered: false,
+                isCorrect: false,
+                youtubeUrl: "https://www.youtube.com/watch?v=TDDb4GUJa6I&t=969s", // 16:09
+                jokerUsed: false,
+                type: 'video'
+            },
+            {
+                id: 7,
+                category: "تبسيط الجمع المتكرر",
+                text: "(٨٨ + ٨٨ + ٨٨) / ٨٨ = ؟", 
+                options: ["١", "٣", "٨٨", "٨٨/٣"], 
+                answer: "٣", 
+                explanation: "نحول الجمع المتكرر إلى ضرب: (٨٨ × ٣) / ٨٨. نحذف ٨٨ من البسط والمقام (لأن الإشارة ضرب)، والناتج هو ٣.",
+                isAnswered: false,
+                isCorrect: false,
+                youtubeUrl: "https://www.youtube.com/watch?v=TDDb4GUJa6I&t=1079s", // 17:59
+                jokerUsed: false,
+                type: 'video'
+            },
+            // ===== Custom Application Questions (type: 'custom') - Indigo Cards - 3 total =====
+            {
+                id: 8,
                 category: "جمع الأعداد الكسرية (تطبيق)",
                 text: "١ و ١/٤ + ٢ و ٣/٤ = ؟", 
                 options: ["٤", "٣ و ٤/٨", "٥", "٤ و ١/٢"],
@@ -435,7 +462,7 @@
                 type: 'custom'
             },
             {
-                id: 7,
+                id: 9,
                 category: "مقارنة الكسور (تطبيق)",
                 text: "رتب من الأصغر للأكبر: ١/٥، ١/٢، ١/٣",
                 options: ["١/٢، ١/٣، ١/٥", "١/٥، ١/٣، ١/٢", "١/٢، ١/٥، ١/٣", "١/٣، ١/٢، ١/٥"],
@@ -447,7 +474,7 @@
                 type: 'custom'
             },
             {
-                id: 8,
+                id: 10,
                 category: "ضرب عدد في كسر (تطبيق)",
                 text: "١٠ × ٢/٥ = ؟",
                 options: ["٢٠/٥٠", "٤", "١٠/٥", "٢٠"],
