@@ -19,7 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 10px; /* تقليل البادينج على الجوال */
         }
 
         .card-shadow {
@@ -30,10 +30,10 @@
             background-color: #fef3c7; /* Light beige/cream */
             border: 4px solid #b45309; /* Dark brown border */
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            /* إضافة خاصية Flexbox لتنظيم العناصر الداخلية */
             display: flex; 
             flex-direction: column;
             gap: 10px;
+            padding: 12px; /* تقليل بادينج لوحة النتائج */
         }
 
         /* حاوية الأيقونة ولوحة النتائج لضمان ظهورها بجانب بعض */
@@ -151,16 +151,52 @@
             padding-bottom: 0.75rem;
         }
 
-
+        /* تعديلات الجوال */
         @media (max-width: 640px) {
+            .score-header h2 {
+                font-size: 1.25rem; /* تصغير عنوان لوحة النتائج */
+            }
+            .score-header span {
+                font-size: 0.875rem; /* تصغير نص 'لا تضغط هنا' */
+            }
+            .score-board .text-xl {
+                font-size: 1rem; /* تصغير تفاصيل النقاط والجوكر */
+            }
+            .card-grid {
+                gap: 10px;
+            }
             .card-back {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
+            .card-back span {
+                font-size: 3rem; /* تصغير أيقونات ظهر البطاقة */
             }
             .question-text {
-                font-size: 2.25rem;
+                font-size: 1.75rem; /* تصغير نص السؤال في المودال */
             }
             .answer-button.arabic-numerals {
-                font-size: 1.5rem;
+                font-size: 1.1rem; /* تصغير خيارات الإجابة */
+                padding: 10px 5px; /* زيادة مساحة النقر */
+            }
+            /* جعل المودال أصغر على الجوال */
+            #question-modal div:first-child {
+                max-width: 95%;
+                padding: 1.5rem;
+            }
+             #rules-modal div:first-child {
+                max-width: 95%;
+                padding: 1.5rem;
+            }
+            /* تصغير خطوط ملخص القوانين */
+            #rules-modal .text-base {
+                font-size: 0.875rem; 
+            }
+            #rules-modal .text-lg {
+                font-size: 1rem;
+            }
+            .joker-button {
+                font-size: 0.875rem;
             }
         }
     </style>
@@ -210,7 +246,7 @@
         </div>
 
         <!-- شبكة البطاقات المقلوبة -->
-        <div id="card-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-6 mb-8">
+        <div id="card-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
             <!-- البطاقات سيتم حقنها هنا -->
         </div>
 
@@ -255,7 +291,7 @@
         <div id="rules-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50" style="display: none;">
             <div class="bg-white card-shadow rounded-3xl p-6 md:p-8 w-full max-w-sm flex flex-col justify-between">
                 <h2 class="text-2xl font-extrabold text-blue-800 mb-5 text-center">قوانين الكسور - مرجع سريع</h2>
-                <div class="space-y-4 text-gray-700 text-base">
+                <div class="space-y-4 text-gray-700 text-sm md:text-base">
                     <div class="p-3 bg-gray-50 rounded-lg border-r-4 border-red-500">
                         <h3 class="font-bold text-lg mb-1 text-red-700">١. الجمع والطرح:</h3>
                         <p class="mr-3 text-sm">يجب توحيد المقامات أولاً، ثم تُجمع أو تُطرح البسوط.</p>
